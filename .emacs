@@ -36,6 +36,16 @@
       kept-old-versions 2
       version-control t)
 
+(require 'clj-refactor)
+
+(defun my-clojure-mode-hook ()
+    (clj-refactor-mode 1)
+    (yas-minor-mode 1) ; for adding require/use/import statements
+    ;; This choice of keybinding leaves cider-macroexpand-1 unbound
+    (cljr-add-keybindings-with-prefix "C-c C-m"))
+
+(add-hook 'clojure-mode-hook #'my-clojure-mode-hook)
+
 
 (use-package helm-mode
   :init
@@ -107,7 +117,7 @@
     ("2eb1f5551310e99101f0f9426485ab73aa5386054da877aacd15d438382bb72e" "1436d643b98844555d56c59c74004eb158dc85fc55d2e7205f8d9b8c860e177f" "8f97d5ec8a774485296e366fdde6ff5589cf9e319a584b845b6f7fa788c9fa9a" "a22f40b63f9bc0a69ebc8ba4fbc6b452a4e3f84b80590ba0a92b4ff599e53ad0" "947190b4f17f78c39b0ab1ea95b1e6097cc9202d55c73a702395fc817f899393" default)))
  '(package-selected-packages
    (quote
-    (lispy use-package naquadah-theme find-file-in-repository helm-flx expand-region paredit css-eldoc sass-mode helm gruvbox-theme cider parinfer company clojure-mode dracula-theme)))
+    (clj-refactor lispy use-package naquadah-theme find-file-in-repository helm-flx expand-region paredit css-eldoc sass-mode helm gruvbox-theme cider parinfer company clojure-mode dracula-theme)))
  '(pdf-view-midnight-colors (quote ("#fdf4c1" . "#282828"))))
 
 (custom-set-faces
