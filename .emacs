@@ -1,18 +1,17 @@
+(require 'cl)
+(menu-bar-mode -1)
+(prefer-coding-system 'utf-8)
+(setq require-final-newline t)
+(setq use-file-dialog nil)
+
 (require 'package)
 (add-to-list 'package-archives (cons "melpa" "https://melpa.org/packages/") t)
 (package-initialize)
-(prefer-coding-system 'utf-8)
+
 (setq history-delete-duplicates t)
 (setq history-length            100) ; default is 30.
 (setq indent-tabs-mode nil)
 
-
-;; Add-newline-at-end-of-files
-(setq require-final-newline t)
-;; never use GTK dialog
-(setq use-file-dialog nil)
-
-; Helm bug
 (when (= emacs-major-version 26)
   (setq x-wait-for-event-timeout nil))
 
@@ -28,7 +27,7 @@
       global-mark-ring-max             200)
 
 
-(menu-bar-mode -1)
+
 (setq backup-directory-alist `(("." . "~/.saves")))
 (setq backup-by-copying t)
 (setq delete-old-versions t
