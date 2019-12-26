@@ -14,12 +14,12 @@
 
 (require 'req-package)
 
-(req-package use-package-el-get ;; prepare el-get support for use-package (optional)
-  :force t ;; load package immediately, no dependency resolution
-  :config)
-  ;(add-to-list 'el-get-recipe-path "~/.emacs.d/el-get/el-get/recipes")
-  ;(el-get 'sync)
-  ;(use-package-el-get-setup))
+;(req-package use-package-el-get ;; prepare el-get support for use-package (optional)
+;  :force t ;; load package immediately, no dependency resolution
+;  :config)
+;  ;(add-to-list 'el-get-recipe-path "~/.emacs.d/el-get/el-get/recipes")
+;  ;(el-get 'sync)
+;  ;(use-package-el-get-setup))
 
 (setq history-delete-duplicates t)
 (setq history-length            100) ; default is 30.
