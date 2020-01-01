@@ -1,4 +1,5 @@
 
+
 ;;; Code:
 ;; (require 'req-package)
 
@@ -43,7 +44,8 @@
 (use-package flycheck
   :config
   (progn
-    (global-flycheck-mode)))
+    (global-flycheck-mode)
+    (add-hook 'flycheck-mode-hook #'flycheck-inline-mode)))
 
 (setq backup-directory-alist `(("." . "~/.saves")))
 (setq backup-by-copying t)
@@ -130,14 +132,18 @@
  '(custom-enabled-themes (quote (dracula)))
  '(custom-safe-themes
    (quote
-    ("c9ddf33b383e74dac7690255dd2c3dfa1961a8e8a1d20e401c6572febef61045" "bf798e9e8ff00d4bf2512597f36e5a135ce48e477ce88a0764cfb5d8104e8163" "36ca8f60565af20ef4f30783aa16a26d96c02df7b4e54e9900a5138fb33808da" "8dc7f4a05c53572d03f161d82158728618fb306636ddeec4cce204578432a06d" "2eb1f5551310e99101f0f9426485ab73aa5386054da877aacd15d438382bb72e" "1436d643b98844555d56c59c74004eb158dc85fc55d2e7205f8d9b8c860e177f" "8f97d5ec8a774485296e366fdde6ff5589cf9e319a584b845b6f7fa788c9fa9a" "a22f40b63f9bc0a69ebc8ba4fbc6b452a4e3f84b80590ba0a92b4ff599e53ad0" "947190b4f17f78c39b0ab1ea95b1e6097cc9202d55c73a702395fc817f899393" default)))
+    ("28caf31770f88ffaac6363acfda5627019cac57ea252ceb2d41d98df6d87e240" "c9ddf33b383e74dac7690255dd2c3dfa1961a8e8a1d20e401c6572febef61045" "bf798e9e8ff00d4bf2512597f36e5a135ce48e477ce88a0764cfb5d8104e8163" "36ca8f60565af20ef4f30783aa16a26d96c02df7b4e54e9900a5138fb33808da" "8dc7f4a05c53572d03f161d82158728618fb306636ddeec4cce204578432a06d" "2eb1f5551310e99101f0f9426485ab73aa5386054da877aacd15d438382bb72e" "1436d643b98844555d56c59c74004eb158dc85fc55d2e7205f8d9b8c860e177f" "8f97d5ec8a774485296e366fdde6ff5589cf9e319a584b845b6f7fa788c9fa9a" "a22f40b63f9bc0a69ebc8ba4fbc6b452a4e3f84b80590ba0a92b4ff599e53ad0" "947190b4f17f78c39b0ab1ea95b1e6097cc9202d55c73a702395fc817f899393" default)))
  '(package-selected-packages
    (quote
-    (js2-mode markdown-mode ;use-package-el-get
-        el-get req-package irony flycheck ample-theme calmer-forest-theme clj-refactor lispy use-package naquadah-theme find-file-in-repository helm-flx expand-region paredit css-eldoc sass-mode helm gruvbox-theme cider parinfer company clojure-mode dracula-theme)))
+    (flycheck-clojure helm-css-scss scss-mode flycheck-inline js2-mode markdown-mode el-get req-package irony flycheck ample-theme calmer-forest-theme clj-refactor lispy use-package naquadah-theme find-file-in-repository helm-flx expand-region paredit css-eldoc sass-mode helm gruvbox-theme cider parinfer company clojure-mode dracula-theme)))
  '(pdf-view-midnight-colors (quote ("#fdf4c1" . "#282828"))))
 
-(custom-set-faces)
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
