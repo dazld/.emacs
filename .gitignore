@@ -1,3 +1,11 @@
+.DS_Store
+.rebel_readline_history
+*.swp
+.idea
+.java-version
+2019.07.24-alpha
+2019.07.*
+
 ### Node ###
 # Logs
 logs
