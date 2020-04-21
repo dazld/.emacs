@@ -53,9 +53,10 @@
 (global-set-key (kbd "C-x C-f") #'helm-find-files)
 (global-set-key (kbd "C-x C-d") #'helm-browse-project)
 
-
-
-(use-package cider)
+(use-package adjust-parens)
+(use-package aggressive-indent)
+(use-package cider
+  :bind ("C-c C-o" . 'cider-repl-clear-buffer))
 (use-package clj-refactor)
 (use-package clojure-mode
   :config
@@ -142,6 +143,7 @@
     (add-hook 'lisp-mode-hook #'parinfer-mode)))
 (use-package sass-mode)
 (use-package scss-mode)
+(use-package smartparens)
 
 
 
@@ -156,7 +158,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (helm-ag scss-mode sass-mode lispy js2-mode irony helm-flx helm-css-scss flycheck-clojure req-package parinfer markdown-mode magit helm-projectile gruvbox-theme flycheck-inline find-file-in-repository expand-region el-get dracula-theme css-eldoc company clj-refactor))))
+    (adjust-parens helm-ag scss-mode sass-mode lispy js2-mode irony helm-flx helm-css-scss flycheck-clojure req-package parinfer markdown-mode magit helm-projectile gruvbox-theme flycheck-inline find-file-in-repository expand-region el-get dracula-theme css-eldoc company clj-refactor))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
