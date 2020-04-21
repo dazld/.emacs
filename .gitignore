@@ -5,6 +5,7 @@
 .java-version
 2019.07.24-alpha
 2019.07.*
+*.iml
 
 ### Node ###
 # Logs
@@ -84,8 +85,6 @@ typings/
 # nuxt.js build output
 .nuxt
 
-# react / gatsby 
-public/
 
 # vuepress build output
 .vuepress/dist
