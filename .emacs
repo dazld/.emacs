@@ -37,8 +37,6 @@
       use-package-always-ensure        t
       use-file-dialog                  nil
       require-final-newline            t
-      report-emacs-bug-no-explanations t
-      comint-prompt-read-only          t
       uniquify-buffer-name-style       nil
       register-preview-delay           nil
       inhibit-startup-message          t
@@ -55,11 +53,8 @@
 (global-set-key (kbd "C-x C-f") #'helm-find-files)
 (global-set-key (kbd "C-x C-d") #'helm-browse-project)
 
-(use-package adjust-parens)
-(use-package aggressive-indent)
 (use-package cider
   :bind ("C-c C-o" . 'cider-repl-clear-buffer))
-(use-package clj-refactor)
 (use-package clojure-mode
   :config
   (defun my-clojure-mode-hook ()
@@ -72,21 +67,12 @@
 (use-package company
   :init
   (add-hook 'after-init-hook 'global-company-mode))
-(use-package css-eldoc)
-(use-package dracula-theme)
-(use-package el-get)
+
 (use-package expand-region
-  :bind (([27 up] . (quote er/expand-region))
-	 ([27 down] . (quote er/contract-region))))
+  :bind (("<M-up>" . 'er/expand-region)
+	 ("<M-down>" . 'er/contract-region)))
 (use-package find-file-in-repository
   :bind ("C-x f" . 'find-file-in-repository))
-(use-package flycheck
-  :config
-  (progn
-    (global-flycheck-mode)
-    (add-hook 'flycheck-mode-hook #'flycheck-inline-mode)))
-(use-package flycheck-clojure)
-(use-package flycheck-inline)
 (use-package helm
   :bind (("M-x" . 'helm-M-x)
 	 ("C-M-s" . 'helm-projectile-ag)
@@ -158,9 +144,11 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(custom-enabled-themes '(monokai))
+ '(custom-safe-themes
+   '("8b58ef2d23b6d164988a607ee153fd2fa35ee33efc394281b1028c2797ddeebb" default))
  '(package-selected-packages
-   (quote
-    (adjust-parens helm-ag scss-mode sass-mode lispy js2-mode irony helm-flx helm-css-scss flycheck-clojure req-package parinfer markdown-mode magit helm-projectile gruvbox-theme flycheck-inline find-file-in-repository expand-region el-get dracula-theme css-eldoc company clj-refactor))))
+   '(adjust-parens helm-ag scss-mode sass-mode lispy js2-mode irony helm-flx helm-css-scss flycheck-clojure req-package parinfer markdown-mode magit helm-projectile gruvbox-theme flycheck-inline find-file-in-repository expand-region el-get dracula-theme css-eldoc company clj-refactor)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
