@@ -53,20 +53,28 @@
 (global-set-key (kbd "C-x C-f") #'helm-find-files)
 (global-set-key (kbd "C-x C-d") #'helm-browse-project)
 
+(use-package editorconfig
+  :ensure t
+  :config
+  (editorconfig-mode 1))
+
 (use-package cider
   :bind ("C-c C-o" . 'cider-repl-clear-buffer))
+
 (use-package clojure-mode
   :config
   (defun my-clojure-mode-hook ()
-    (clj-refactor-mode 1)
     (yas-minor-mode 1) ; for adding require/use/import statements
     ;; This choice of keybinding leaves cider-macroexpand-1 unbound
     (cljr-add-keybindings-with-prefix "C-c C-m"))
   (add-hook 'clojure-mode-hook #'cider-mode)
   (add-hook 'clojure-mode-hook 'my-clojure-mode-hook))
+
 (use-package company
   :init
   (add-hook 'after-init-hook 'global-company-mode))
+
+(use-package adjust-parens)
 
 (use-package expand-region
   :bind (("<M-up>" . 'er/expand-region)
@@ -92,12 +100,12 @@
         helm-recentf-fuzzy-match              t
         helm-semantic-fuzzy-match             t)
   (add-hook 'helm-mode-hook
-            (lambda ()
-              (setq completion-styles
-                    (cond ((assq 'helm-flex completion-styles-alist)
-                           '(helm-flex))
-                          ((assq 'flex completion-styles-alist)
-                           '(flex))))))
+	    (lambda ()
+	      (setq completion-styles
+		    (cond ((assq 'helm-flex completion-styles-alist)
+			   '(helm-flex))
+			  ((assq 'flex completion-styles-alist)
+			   '(flex))))))
   :config
   (helm-mode 1))
 (use-package helm-ag)
@@ -147,8 +155,9 @@
  '(custom-enabled-themes '(monokai))
  '(custom-safe-themes
    '("8b58ef2d23b6d164988a607ee153fd2fa35ee33efc394281b1028c2797ddeebb" default))
+ '(line-number-mode nil)
  '(package-selected-packages
-   '(adjust-parens helm-ag scss-mode sass-mode lispy js2-mode irony helm-flx helm-css-scss flycheck-clojure req-package parinfer markdown-mode magit helm-projectile gruvbox-theme flycheck-inline find-file-in-repository expand-region el-get dracula-theme css-eldoc company clj-refactor)))
+   '(adjust-parens helm-ag scss-mode sass-mode lispy js2-mode irony helm-flx helm-css-scss req-package parinfer markdown-mode magit helm-projectile find-file-in-repository expand-region el-get css-eldoc company)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
