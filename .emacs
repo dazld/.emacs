@@ -141,6 +141,35 @@
 (use-package scss-mode)
 (use-package smartparens)
 
+(use-package lsp-mode
+  :ensure t
+  :hook ((clojure-mode . lsp)
+         (clojurec-mode . lsp)
+         (clojurescript-mode . lsp))
+  :config
+  ;; add paths to your local installation of project mgmt tools, like lein
+  (setenv "PATH" (concat
+                  "/usr/local/bin" path-separator
+                  (getenv "PATH")))
+  (dolist (m '(clojure-mode
+               clojurec-mode
+               clojurescript-mode
+               clojurex-mode))
+    (add-to-list 'lsp-language-id-configuration `(,m . "clojure")))
+  (setq lsp-clojure-server-command '("bash" "-c" "clojure-lsp") ;; Optional: In case `clojure-lsp` is not in your PATH
+        lsp-enable-indentation nil))
+
+(use-package lsp-ui
+  :ensure t
+  :commands lsp-ui-mode)
+
+(use-package company-lsp
+  :ensure t
+  :commands company-lsp)
+
+(use-package flycheck
+  :ensure t
+  :init (global-flycheck-mode))
 
 
 
@@ -152,12 +181,16 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(ansi-color-faces-vector
+   [default default default italic underline success warning error])
+ '(ansi-color-names-vector
+   ["black" "red3" "ForestGreen" "yellow3" "blue" "magenta3" "DeepSkyBlue" "gray50"])
  '(custom-enabled-themes '(monokai))
  '(custom-safe-themes
    '("8b58ef2d23b6d164988a607ee153fd2fa35ee33efc394281b1028c2797ddeebb" default))
  '(line-number-mode nil)
  '(package-selected-packages
-   '(adjust-parens helm-ag scss-mode sass-mode lispy js2-mode irony helm-flx helm-css-scss req-package parinfer markdown-mode magit helm-projectile find-file-in-repository expand-region el-get css-eldoc company)))
+   '(flycheck monokai-theme smartparens paredit multiple-cursors cider editorconfig use-package adjust-parens helm-ag scss-mode sass-mode lispy js2-mode irony helm-flx helm-css-scss req-package parinfer markdown-mode magit helm-projectile find-file-in-repository expand-region el-get css-eldoc company)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
