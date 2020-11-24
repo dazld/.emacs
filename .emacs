@@ -16,7 +16,7 @@
 (unless (package-installed-p 'use-package)
   (package-install 'use-package))
 (require 'use-package)
-
+(line-number-mode 1)
 
 ;; Unicode
 (set-charset-priority 'unicode)
@@ -52,6 +52,9 @@
 (global-set-key (kbd "C-x r b") #'helm-filtered-bookmarks)
 (global-set-key (kbd "C-x C-f") #'helm-find-files)
 (global-set-key (kbd "C-x C-d") #'helm-browse-project)
+(global-set-key (kbd "M-{") #'paredit-forward-slurp-sexp)
+(global-set-key (kbd "M-}") #'paredit-forward-barf-sexp)
+
 
 (use-package editorconfig
   :ensure t
@@ -84,7 +87,6 @@
 (use-package helm
   :bind (("M-x" . 'helm-M-x)
 	 ("C-M-s" . 'helm-projectile-ag)
-	 ("C-x r b" . 'helm-filtered-bookmarks)
 	 ("C-x C-d" . 'helm-browse-project))
   :init
   (setq helm-mode-fuzzy-match                 t
@@ -111,11 +113,9 @@
 (use-package helm-ag)
 (use-package helm-css-scss)
 (use-package helm-flx)
-(use-package helm-projectile)
+(use-package helm-company)
 (use-package irony)
-(use-package js2-mode)
 (use-package lispy)
-(use-package magit)
 (use-package markdown-mode)
 (use-package multiple-cursors)
 (use-package paredit)
@@ -137,7 +137,6 @@
     (add-hook 'common-lisp-mode-hook #'parinfer-mode)
     (add-hook 'scheme-mode-hook #'parinfer-mode)
     (add-hook 'lisp-mode-hook #'parinfer-mode)))
-(use-package sass-mode)
 (use-package scss-mode)
 (use-package smartparens)
 
@@ -156,16 +155,11 @@
                clojurescript-mode
                clojurex-mode))
     (add-to-list 'lsp-language-id-configuration `(,m . "clojure")))
-  (setq lsp-clojure-server-command '("bash" "-c" "clojure-lsp") ;; Optional: In case `clojure-lsp` is not in your PATH
-        lsp-enable-indentation nil))
+  (setq lsp-enable-indentation nil))
 
-(use-package lsp-ui
+'(use-package lsp-ui
   :ensure t
   :commands lsp-ui-mode)
-
-(use-package company-lsp
-  :ensure t
-  :commands company-lsp)
 
 (use-package flycheck
   :ensure t
@@ -188,9 +182,8 @@
  '(custom-enabled-themes '(monokai))
  '(custom-safe-themes
    '("8b58ef2d23b6d164988a607ee153fd2fa35ee33efc394281b1028c2797ddeebb" default))
- '(line-number-mode nil)
  '(package-selected-packages
-   '(flycheck monokai-theme smartparens paredit multiple-cursors cider editorconfig use-package adjust-parens helm-ag scss-mode sass-mode lispy js2-mode irony helm-flx helm-css-scss req-package parinfer markdown-mode magit helm-projectile find-file-in-repository expand-region el-get css-eldoc company)))
+   '(flycheck monokai-theme smartparens paredit multiple-cursors cider editorconfig use-package adjust-parens helm-ag scss-mode lispy irony helm-flx helm-css-scss parinfer markdown-mode find-file-in-repository expand-region el-get css-eldoc company)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
