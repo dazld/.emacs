@@ -1,4 +1,6 @@
 .sass-cache
+.clj-kondo
+.lsp
 .DS_Store
 .rebel_readline_history
 *.swp
