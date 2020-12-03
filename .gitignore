@@ -9,6 +9,7 @@
 2019.07.24-alpha
 2019.07.*
 *.iml
+__pycache__
 
 ### Node ###
 # Logs
