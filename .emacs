@@ -65,10 +65,13 @@
 
 (use-package clojure-mode
   :config
+  (add-hook 'clojure-mode-hook #'parinfer-rust-mode)
   (add-hook 'clojure-mode-hook #'cider-mode))
 
 (use-package company
   :init
+  (setq company-minimum-prefix-length 2
+        company-idle-delay 0)
   (add-hook 'after-init-hook 'global-company-mode))
 
 ;; (use-package adjust-parens)
@@ -160,8 +163,20 @@
  ;; If there is more than one, they won't work right.
  '(custom-enabled-themes '(monokai))
  '(custom-safe-themes
-   '("d9646b131c4aa37f01f909fbdd5a9099389518eb68f25277ed19ba99adeb7279" default)))
-(custom-set-faces)
+   '("d9646b131c4aa37f01f909fbdd5a9099389518eb68f25277ed19ba99adeb7279" default))
+ '(package-selected-packages
+   '(use-package smartparens sass-mode rust-mode parinfer-rust-mode paredit monokai-theme modus-vivendi-theme modus-operandi-theme lsp-ui lispy helm-flx helm-css-scss helm-company flycheck find-file-in-repository expand-region el-get editorconfig css-eldoc cider)))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
