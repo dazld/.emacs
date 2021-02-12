@@ -20,6 +20,9 @@
 (require 'use-package)
 (line-number-mode 1)
 
+(setq whitespace-style '(tabs tab-mark))
+
+
 ;; Unicode
 (set-charset-priority 'unicode)
 (prefer-coding-system 'utf-8)
@@ -84,15 +87,15 @@
 
 (use-package helm
   :bind (("M-x" . 'helm-M-x)
-	 ("C-x b" . 'helm-buffers-list)
-	 ("C-s" . 'helm-occur)
-	 ("M-y" . 'helm-show-kill-ring)
-	 ("C-x C-d" . 'helm-browse-project))
+         ("C-x b" . 'helm-buffers-list)
+         ("C-s" . 'helm-occur)
+         ("M-y" . 'helm-show-kill-ring)
+         ("C-x C-d" . 'helm-browse-project))
   :init
   (setq helm-mode-fuzzy-match                 t
-	helm-move-to-line-cycle-in-source     t
-        helm-completion-in-region-fuzzy-match t
         helm-grep-ag-command                  "rg --color=always --smart-case --no-heading --line-number %s %s %s"
+        helm-move-to-line-cycle-in-source     t
+        helm-completion-in-region-fuzzy-match t
         helm-M-x-fuzzy-match                  t
         helm-bookmark-show-location           t
         helm-buffers-fuzzy-matching           t
@@ -103,12 +106,12 @@
         helm-recentf-fuzzy-match              t
         helm-semantic-fuzzy-match             t)
   (add-hook 'helm-mode-hook
-	    (lambda ()
-	      (setq completion-styles
-		    (cond ((assq 'helm-flex completion-styles-alist)
-			   '(helm-flex))
-			  ((assq 'flex completion-styles-alist)
-			   '(flex))))))
+        (lambda ()
+          (setq completion-styles
+            (cond ((assq 'helm-flex completion-styles-alist)
+               '(helm-flex))
+              ((assq 'flex completion-styles-alist)
+               '(flex))))))
   :config
   (helm-mode 1))
 
@@ -153,3 +156,17 @@
 (use-package monokai-theme)
 
 ;;; .emacs ends here
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(custom-enabled-themes '(monokai))
+ '(custom-safe-themes
+   '("d9646b131c4aa37f01f909fbdd5a9099389518eb68f25277ed19ba99adeb7279" default)))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
