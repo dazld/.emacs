@@ -2,6 +2,8 @@
 
 ;;; Code:
 
+
+
 ;; no thx
 (menu-bar-mode -1)
 
@@ -69,7 +71,7 @@
   :init
   (add-hook 'after-init-hook 'global-company-mode))
 
-(use-package adjust-parens)
+;; (use-package adjust-parens)
 
 (use-package expand-region
   :bind (("<C-up>" . 'er/expand-region)
@@ -89,7 +91,7 @@
   :init
   (setq helm-mode-fuzzy-match                 t
 	helm-move-to-line-cycle-in-source     t
-        qhelm-completion-in-region-fuzzy-match t
+        helm-completion-in-region-fuzzy-match t
         helm-grep-ag-command                  "rg --color=always --smart-case --no-heading --line-number %s %s %s"
         helm-M-x-fuzzy-match                  t
         helm-bookmark-show-location           t
@@ -109,44 +111,25 @@
 			   '(flex))))))
   :config
   (helm-mode 1))
+
 (use-package helm-css-scss)
 (use-package helm-flx)
-(use-package helm-company
-  :ensure t)
-(use-package lispy
-  :ensure t)
-(use-package markdown-mode
-  :ensure t)
-(use-package multiple-cursors
-  :ensure t)
+(use-package helm-company)
+(use-package lispy)
+(use-package markdown-mode)
+(use-package multiple-cursors)
+
 (use-package paredit
   :bind (("ESC <left>" . 'paredit-forward-slurp-sexp)
-	 ("ESC <right>" . 'paredit-forward-barf-sexp)))
+         ("ESC <right>" . 'paredit-forward-barf-sexp)))
 
-(use-package parinfer
-  :ensure t
-  :bind
-  (("ESC ." . parinfer-toggle-mode))
+(use-package parinfer-rust-mode
   :init
-  (progn
-    (setq parinfer-extensions
-          '(defaults       ; should be included.
-	     pretty-parens  ; different paren styles for different modes.
-	     evil           ; If you use Evil.
-	     paredit        ; Introduce some paredit commands.
-	     smart-tab      ; C-b & C-f jump positions and smart shift with tab & S-tab.
-	     smart-yank))   ; Yank behavior depend on mode.
-    (add-hook 'clojure-mode-hook #'parinfer-mode)
-    (add-hook 'emacs-lisp-mode-hook #'parinfer-mode)
-    (add-hook 'common-lisp-mode-hook #'parinfer-mode)
-    (add-hook 'scheme-mode-hook #'parinfer-mode)
-    (add-hook 'lisp-mode-hook #'parinfer-mode)))
+  (setq parinfer-rust-mode-auto-download t))
 
-(use-package smartparens
-  :ensure t)
+(use-package smartparens)
 
 (use-package lsp-mode
-  :ensure t
   :hook ((clojure-mode . lsp)
          (clojurec-mode . lsp)
          (clojurescript-mode . lsp))
@@ -162,74 +145,11 @@
     (add-to-list 'lsp-language-id-configuration `(,m . "clojure")))
   (setq lsp-enable-indentation nil))
 
-(use-package sass-mode
-  :ensure t)
-
+(use-package sass-mode)
 (use-package lsp-ui
-  :ensure t
   :commands lsp-ui-mode)
-
 (use-package flycheck
-  :ensure t
   :init (global-flycheck-mode))
-
-(use-package monokai-theme
-  :ensure t)
-
-
-
-
-
+(use-package monokai-theme)
 
 ;;; .emacs ends here
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(ansi-color-faces-vector
-   [default default default italic underline success warning error])
- '(ansi-color-names-vector
-   ["black" "red3" "ForestGreen" "yellow3" "blue" "magenta3" "DeepSkyBlue" "gray50"])
- '(custom-enabled-themes '(monokai))
- '(custom-safe-themes
-   '("d9646b131c4aa37f01f909fbdd5a9099389518eb68f25277ed19ba99adeb7279" "7ea491e912d419e6d4be9a339876293fff5c8d13f6e84e9f75388063b5f794d6" "96c56bd2aab87fd92f2795df76c3582d762a88da5c0e54d30c71562b7bf9c605" "8b58ef2d23b6d164988a607ee153fd2fa35ee33efc394281b1028c2797ddeebb" default))
- '(flymake-error-bitmap '(flymake-double-exclamation-mark modus-theme-fringe-red))
- '(flymake-note-bitmap '(exclamation-mark modus-theme-fringe-cyan))
- '(flymake-warning-bitmap '(exclamation-mark modus-theme-fringe-yellow))
- '(hl-todo-keyword-faces
-   '(("HOLD" . "#70480f")
-     ("TODO" . "#721045")
-     ("NEXT" . "#5317ac")
-     ("THEM" . "#8f0075")
-     ("PROG" . "#00538b")
-     ("OKAY" . "#30517f")
-     ("DONT" . "#315b00")
-     ("FAIL" . "#a60000")
-     ("BUG" . "#a60000")
-     ("DONE" . "#005e00")
-     ("NOTE" . "#863927")
-     ("KLUDGE" . "#813e00")
-     ("HACK" . "#813e00")
-     ("TEMP" . "#5f0000")
-     ("FIXME" . "#a0132f")
-     ("XXX+" . "#972500")
-     ("REVIEW" . "#005a5f")
-     ("DEPRECATED" . "#201f55")))
- '(ibuffer-deletion-face 'modus-theme-mark-del)
- '(ibuffer-filter-group-name-face 'modus-theme-mark-symbol)
- '(ibuffer-marked-face 'modus-theme-mark-sel)
- '(ibuffer-title-face 'modus-theme-header)
- '(package-selected-packages
-   '(modus-operandi-theme modus-vivendi-theme rust-mode flycheck monokai-theme smartparens paredit multiple-cursors cider editorconfig use-package adjust-parens helm-ag scss-mode lispy irony helm-flx helm-css-scss parinfer markdown-mode find-file-in-repository expand-region el-get css-eldoc company))
- '(vc-annotate-background-mode nil)
- '(xterm-color-names
-   ["#000000" "#a60000" "#005e00" "#813e00" "#0030a6" "#721045" "#00538b" "#f0f0f0"])
- '(xterm-color-names-bright
-   ["#505050" "#972500" "#315b00" "#70480f" "#223fbf" "#8f0075" "#30517f" "#ffffff"]))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
