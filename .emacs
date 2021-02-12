@@ -20,10 +20,6 @@
 (require 'use-package)
 (line-number-mode 1)
 
-(setq whitespace-style '(tabs tab-mark))
-
-
-
 ;; Unicode
 (set-charset-priority 'unicode)
 (prefer-coding-system 'utf-8)
