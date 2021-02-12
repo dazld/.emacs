@@ -23,6 +23,7 @@
 (setq whitespace-style '(tabs tab-mark))
 
 
+
 ;; Unicode
 (set-charset-priority 'unicode)
 (prefer-coding-system 'utf-8)
@@ -109,7 +110,7 @@
         (lambda ()
           (setq completion-styles
             (cond ((assq 'helm-flex completion-styles-alist)
-               '(helm-flex))
+                   '(helm-flex))
               ((assq 'flex completion-styles-alist)
                '(flex))))))
   :config
@@ -164,9 +165,8 @@
  '(custom-enabled-themes '(monokai))
  '(custom-safe-themes
    '("d9646b131c4aa37f01f909fbdd5a9099389518eb68f25277ed19ba99adeb7279" default)))
-(custom-set-faces
+(custom-set-faces)
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
