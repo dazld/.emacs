@@ -12,6 +12,8 @@
 (add-to-list 'package-archives
              '("melpa" . "https://melpa.org/packages/"))
 
+(add-to-list 'exec-path "/usr/local/bin")
+
 (when (not package-archive-contents)
   (package-refresh-contents))
 
