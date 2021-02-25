@@ -48,11 +48,6 @@
 
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
-
-(global-set-key (kbd "C-x C-f") #'helm-find-files)
-(global-set-key (kbd "M-{") #'paredit-forward-slurp-sexp)
-(global-set-key (kbd "M-}") #'paredit-forward-barf-sexp)
-
 (use-package editorconfig
   :config
   (editorconfig-mode 1))
@@ -82,12 +77,17 @@
 (use-package find-file-in-repository
   :bind ("C-x f" . 'find-file-in-repository))
 
+(use-package helm-css-scss)
+(use-package helm-flx)
+(use-package helm-company)
+
 (use-package helm
   :bind (("M-x" . 'helm-M-x)
          ("C-x b" . 'helm-buffers-list)
          ("C-s" . 'helm-occur)
          ("M-y" . 'helm-show-kill-ring)
-         ("C-x C-d" . 'helm-browse-project))
+         ("C-x C-d" . 'helm-browse-project)
+         ("C-x C-f" . 'helm-find-files))
   :init
   (setq helm-mode-fuzzy-match                 t
         helm-grep-ag-command                  "rg --color=always --smart-case --no-heading --line-number %s %s %s"
@@ -112,12 +112,7 @@
   :config
   (helm-mode 1))
 
-(use-package helm-css-scss)
-(use-package helm-flx)
-(use-package helm-company)
-(use-package lispy)
 (use-package markdown-mode)
-(use-package multiple-cursors)
 
 (use-package paredit
   :bind (("ESC <left>" . 'paredit-forward-slurp-sexp)
@@ -128,12 +123,10 @@
   :init
   (setq parinfer-rust-mode-auto-download t))
 
-(use-package smartparens)
-
 (use-package lsp-mode
-  :hook ((clojure-mode . lsp)
-         (clojurec-mode . lsp)
-         (clojurescript-mode . lsp))
+  :hook (clojure-mode
+         clojurec-mode
+         clojurescript-mode)
   :config
   ;; add paths to your local installation of project mgmt tools, like lein
   (setenv "PATH" (concat
@@ -152,6 +145,7 @@
 (use-package flycheck
   :init (global-flycheck-mode))
 (use-package monokai-theme)
+(use-package css-eldoc)
 
 ;;; .emacs ends here
 (custom-set-variables
@@ -163,19 +157,6 @@
  '(custom-safe-themes
    '("d9646b131c4aa37f01f909fbdd5a9099389518eb68f25277ed19ba99adeb7279" default))
  '(package-selected-packages
-   '(use-package smartparens sass-mode rust-mode parinfer-rust-mode paredit monokai-theme modus-vivendi-theme modus-operandi-theme lsp-ui lispy helm-flx helm-css-scss helm-company flycheck find-file-in-repository expand-region el-get editorconfig css-eldoc cider)))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
+   '(use-package sass-mode rust-mode parinfer-rust-mode paredit monokai-theme lsp-ui helm-flx helm-css-scss helm-company flycheck find-file-in-repository expand-region editorconfig css-eldoc cider)))
 
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
+(custom-set-faces)
