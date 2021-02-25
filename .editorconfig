@@ -1,0 +1,15 @@
+root = true
+
+# For most files
+[*]
+end_of_line = lf
+insert_final_newline = true
+charset = utf-8
+trim_trailing_whitespace = true
+indent_style = space
+indent_size = 2
+
+# Override for Makefile
+[{Makefile, makefile, GNUmakefile}]
+indent_style = tab
+indent_size = 4

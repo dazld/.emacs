@@ -11,9 +11,11 @@
              '("melpa" . "https://melpa.org/packages/"))
 
 (add-to-list 'exec-path "/usr/local/bin")
+(add-to-list 'exec-path "/Users/dan/n/bin")
+(setenv "PATH" (concat (getenv "PATH") ":/usr/local/sbin:/Users/dan/.jenv/shims:/Users/dan/.jenv/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/Library/Apple/usr/bin:/Users/dan/.cargo/bin:/Users/dan/n/bin:/Users/dan/.rvm/bin:/usr/local/opt/fzf/bin")
 
-(when (not package-archive-contents)
-  (package-refresh-contents))
+        (when (not package-archive-contents)
+          (package-refresh-contents)))
 
 (unless (package-installed-p 'use-package)
   (package-install 'use-package))
@@ -129,6 +131,7 @@
          clojurescript-mode)
   :config
   ;; add paths to your local installation of project mgmt tools, like lein
+  (require 'helm-config)
   (setenv "PATH" (concat
                   "/usr/local/bin" path-separator
                   (getenv "PATH")))
