@@ -2,8 +2,6 @@
 
 ;;; Code:
 
-
-
 ;; no thx
 (menu-bar-mode -1)
 
@@ -26,28 +24,27 @@
 (set-charset-priority 'unicode)
 (prefer-coding-system 'utf-8)
 
-(setq history-delete-duplicates t)
-(setq history-length            100) ; default is 30.
+(setq-default backup-directory-alist `(("." . "~/.saves"))
+              history-length 100
+              history-delete-duplicates t
+              delete-old-versions t
+              backup-by-copying t
+              kept-new-versions 6
+              kept-old-versions 2
+              version-control t)
 
-(setq backup-directory-alist `(("." . "~/.saves")))
-(setq backup-by-copying t)
-(setq delete-old-versions t
-      kept-new-versions 6
-      kept-old-versions 2
-      version-control t)
-
-(setq line-move-visual                 nil
-      indent-tabs-mode                 nil
-      use-package-always-ensure        t
-      use-file-dialog                  nil
-      require-final-newline            t
-      uniquify-buffer-name-style       nil
-      register-preview-delay           nil
-      inhibit-startup-message          t
-      message-log-max                  1000
-      kill-ring-max                    80
-      mark-ring-max                    60
-      global-mark-ring-max             200)
+(setq-default line-move-visual                 nil
+              indent-tabs-mode                 nil
+              use-package-always-ensure        t
+              use-file-dialog                  nil
+              require-final-newline            t
+              uniquify-buffer-name-style       nil
+              register-preview-delay           nil
+              inhibit-startup-message          t
+              message-log-max                  1000
+              kill-ring-max                    80
+              mark-ring-max                    60
+              global-mark-ring-max             200)
 
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
@@ -55,8 +52,6 @@
 (global-set-key (kbd "C-x C-f") #'helm-find-files)
 (global-set-key (kbd "M-{") #'paredit-forward-slurp-sexp)
 (global-set-key (kbd "M-}") #'paredit-forward-barf-sexp)
-
-
 
 (use-package editorconfig
   :config
@@ -129,6 +124,7 @@
          ("ESC <right>" . 'paredit-forward-barf-sexp)))
 
 (use-package parinfer-rust-mode
+  :hook (clojure-mode emacs-lisp-mode)
   :init
   (setq parinfer-rust-mode-auto-download t))
 
