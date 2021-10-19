@@ -62,6 +62,24 @@
   (add-hook 'clojure-mode-hook #'parinfer-rust-mode)
   (add-hook 'clojure-mode-hook #'cider-mode))
 
+(setq org-roam-v2-ack t)
+
+(use-package org-roam
+  :ensure t
+  :custom
+  (org-roam-directory (file-truename "/Users/dan/Library/Mobile Documents/com~apple~CloudDocs/roam"))
+  :bind (("C-c n l" . org-roam-buffer-toggle)
+         ("C-c n f" . org-roam-node-find)
+         ("C-c n g" . org-roam-graph)
+         ("C-c n i" . org-roam-node-insert)
+         ("C-c n c" . org-roam-capture)
+         ;; Dailies
+         ("C-c n j" . org-roam-dailies-capture-today))
+  :config
+  (org-roam-db-autosync-mode)
+  ;; If using org-roam-protocol
+  (require 'org-roam-protocol))
+
 (use-package company
   :init
   (setq company-minimum-prefix-length 2
@@ -160,6 +178,10 @@
  '(custom-safe-themes
    '("d9646b131c4aa37f01f909fbdd5a9099389518eb68f25277ed19ba99adeb7279" default))
  '(package-selected-packages
-   '(use-package sass-mode rust-mode parinfer-rust-mode paredit monokai-theme lsp-ui helm-flx helm-css-scss helm-company flycheck find-file-in-repository expand-region editorconfig css-eldoc cider)))
+   '(rg use-package sass-mode rust-mode parinfer-rust-mode paredit monokai-theme lsp-ui helm-flx helm-css-scss helm-company flycheck find-file-in-repository expand-region editorconfig css-eldoc cider)))
 
 (custom-set-faces)
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
