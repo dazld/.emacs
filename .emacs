@@ -59,7 +59,7 @@
 
 (use-package clojure-mode
   :config
-  (add-hook 'clojure-mode-hook #'parinfer-rust-mode)
+  ;;(add-hook 'clojure-mode-hook #'parinfer-rust-mode)
   (add-hook 'clojure-mode-hook #'cider-mode))
 
 (setq org-roam-v2-ack t)
@@ -138,10 +138,10 @@
   :bind (("ESC <left>" . 'paredit-forward-slurp-sexp)
          ("ESC <right>" . 'paredit-forward-barf-sexp)))
 
-(use-package parinfer-rust-mode
-  :hook (clojure-mode emacs-lisp-mode)
-  :init
-  (setq parinfer-rust-mode-auto-download t))
+;(use-package parinfer-rust-mode
+;  :hook (clojure-mode emacs-lisp-mode)
+;  :init
+;  (setq parinfer-rust-mode-auto-download t))
 
 (use-package lsp-mode
   :hook (clojure-mode
@@ -175,12 +175,17 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(custom-enabled-themes '(monokai))
- '(custom-safe-themes
-   '("d9646b131c4aa37f01f909fbdd5a9099389518eb68f25277ed19ba99adeb7279" default))
- '(package-selected-packages
-   '(rg use-package sass-mode rust-mode parinfer-rust-mode paredit monokai-theme lsp-ui helm-flx helm-css-scss helm-company flycheck find-file-in-repository expand-region editorconfig css-eldoc cider)))
+  '(custom-safe-themes
+     '("d9646b131c4aa37f01f909fbdd5a9099389518eb68f25277ed19ba99adeb7279" default))
+  '(package-selected-packages
+     '(rg use-package sass-mode rust-mode parinfer-rust-mode paredit monokai-theme lsp-ui helm-flx helm-css-scss helm-company flycheck find-file-in-repository expand-region editorconfig css-eldoc cider)))
 
-(custom-set-faces)
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
