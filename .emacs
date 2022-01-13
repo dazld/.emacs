@@ -8,7 +8,7 @@
 ;; nom nom
 (package-initialize)
 (add-to-list 'package-archives
-             '("melpa" . "https://melpa.org/packages/"))
+  '("melpa" . "https://melpa.org/packages/"))
 
 (add-to-list 'exec-path "/usr/local/bin")
 (add-to-list 'exec-path "/Users/dan/n/bin")
@@ -138,10 +138,11 @@
   :bind (("ESC <left>" . 'paredit-forward-slurp-sexp)
          ("ESC <right>" . 'paredit-forward-barf-sexp)))
 
-;(use-package parinfer-rust-mode
-;  :hook (clojure-mode emacs-lisp-mode)
-;  :init
-;  (setq parinfer-rust-mode-auto-download t))
+(use-package parinfer-rust-mode
+  :hook (clojure-mode emacs-lisp-mode)
+  :init
+  (setq parinfer-rust-preferred-mode "indent")
+  (setq parinfer-rust-mode-auto-download nil))
 
 (use-package lsp-mode
   :hook (clojure-mode

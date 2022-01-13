@@ -1,5 +1,6 @@
 .sass-cache
 lsp
+.idea
 .clj-kondo
 .lsp
 .DS_Store
